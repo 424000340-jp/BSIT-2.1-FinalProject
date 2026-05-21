@@ -85,12 +85,37 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p class="text-muted">Form setup coming up next.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn class-secondary btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Submit</button>
-        </div>
+         <form id="portfolioContactForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="userName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="userName" name="name" required>
+              <div class="invalid-feedback">Please provide your full name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="userEmail" name="email" required>
+              <div class="invalid-feedback">Please provide a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="userSubject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="userSubject" name="subject" required>
+              <div class="invalid-feedback">Please specify a message subject.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="userMessage" class="form-label">Message</label>
+              <textarea class="form-control" id="userMessage" name="message" rows="4" minlength="20" required></textarea>
+              <div class="invalid-feedback">Your message text must be at least 20 characters long.</div>
+            </div>
+
+            <div class="modal-footer px-0 pb-0 pt-3">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" id="submitFormBtn">Submit</button>
+            </div>
+          </form>
+        
       </div>
     </div>
   </div>
