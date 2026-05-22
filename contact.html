@@ -1,86 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BSIT Framework | Secure Gateway</title>
+  <title>System Core | Secure Gateway</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
-<body>
+<body class="d-flex flex-column h-100 text-white bg-dark-custom">
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top premium-navbar">
     <div class="container">
       <a class="navbar-brand fw-bold fs-4" href="index.html">SYSTEM<span class="text-info">CORE</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav ms-auto fw-bold">
-          <a class="nav-link me-3" href="index.html">Home Dashboard</a>
-          <a class="nav-link me-3" href="about.html">Team Registry</a>
-          <a class="nav-link active text-info" href="contact.html">Secure Gateway</a>
-        </div>
+        <ul class="navbar-nav ms-auto gap-3 fw-medium">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#modules-section">Team Registry</a></li>
+          <li class="nav-item"><a class="nav-link active text-info" href="contact.html">Secure Gateway</a></li>
+        </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container my-auto py-5">
+  <main class="container my-auto py-5 mt-5">
     <div class="row justify-content-center">
       <div class="col-lg-6">
-        <div class="p-4 rounded-4 bg-dark border border-info shadow-lg form-container-wow">
-          <div class="text-center mb-4">
-            <h2 class="fw-bold text-white">Data Submission Pipeline Gateway</h2>
-            <p class="text-muted small">Input valid user records to perform live frontend evaluation routing loops.</p>
-          </div>
+        <div class="p-5 rounded-4 cyber-panel text-start position-relative">
           
+          <div class="text-center mb-4">
+            <span class="badge bg-cyan-glow text-info fw-bold mb-2 px-3 py-2">● COMPONENT CODES: CONTACT_HANDLER</span>
+            <h2 class="fw-bold text-white">Interaction Gateway</h2>
+            <p class="text-white-50 small">Input backend tracking data into the data gateway pipeline below.</p>
+          </div>
+
+          <hr class="border-secondary mb-4">
+
           <form action="contact.php" method="POST" class="needs-validation text-start" novalidate>
+            
             <div class="mb-3">
-              <label class="form-label-bright">AUTHORIZED OPERATOR NAME</label>
-              <input type="text" class="form-control premium-field" name="name" placeholder="Input system operator identifier..." required>
-              <div class="invalid-feedback text-danger fw-bold">System Error: Identity block field cannot be left blank.</div>
+              <label for="name" class="form-label text-info small fw-bold tracking-wider">AUTHORIZED OPERATOR NAME</label>
+              <input type="text" class="form-control bg-dark text-white border-secondary font-monospace" id="name" name="name" placeholder="e.g. Jaypee Ramos" required>
+              <div class="invalid-feedback text-danger small mt-1">Operator tracking identification is required.</div>
             </div>
 
             <div class="mb-3">
-              <label class="form-label-bright">NETWORK EMAIL COORDINATE</label>
-              <input type="email" class="form-control premium-field" name="email" placeholder="operator@domain.com" required>
-              <div class="invalid-feedback text-danger fw-bold">System Error: Please input a verified active email configuration path.</div>
+              <label for="email" class="form-label text-info small fw-bold tracking-wider">NETWORK EMAIL COORDINATE</label>
+              <input type="email" class="form-control bg-dark text-white border-secondary font-monospace" id="email" name="email" placeholder="operator@systemcore.local" required>
+              <div class="invalid-feedback text-danger small mt-1">Provide a verified server route mail path address.</div>
             </div>
 
             <div class="mb-4">
-              <label class="form-label-bright">TRANSACTION MESSAGE PAYLOAD (MINIMUM 20 CHARACTERS)</label>
-              <textarea class="form-control premium-field" name="message" rows="4" minlength="20" placeholder="Input necessary technical parameters or transaction logs..." required></textarea>
-              <div class="invalid-feedback text-danger fw-bold">System Error: Payload must contain a minimum of 20 characters to bypass firewalls.</div>
+              <label for="message" class="form-label text-info small fw-bold tracking-wider">TRANSACTION MESSAGE PAYLOAD</label>
+              <textarea class="form-control bg-dark text-white border-secondary font-monospace" id="message" name="message" rows="4" placeholder="Initiating system node sync test routine..." required></textarea>
+              
+              <div id="char-count" class="text-white-50 small mt-1 font-monospace" style="font-size: 0.75rem;">Characters typed: 0 / 20 minimum</div>
+              
+              <div class="invalid-feedback text-danger small mt-1">Payload must be a substantive interaction string (minimum 20 characters).</div>
             </div>
 
-            <button type="submit" class="btn btn-info w-100 py-3 text-dark fw-bold fs-5 shadow-sm">EXECUTE PARAMETER TRANSMISSION</button>
+            <div class="d-grid pt-2">
+              <button type="submit" class="btn btn-info fw-bold py-2 text-uppercase tracking-wider">Execute Request Validation &rarr;</button>
+            </div>
           </form>
+
         </div>
       </div>
     </div>
   </main>
 
-  <footer class="py-4 text-center text-white-50 mt-auto">
+  <footer class="py-4 text-center text-white-50 mt-auto border-top border-dark">
     <div class="container">
-      <p class="m-0 fw-bold text-white">&copy; 2026 Academic Development Infrastructure Group</p>
+      <p class="m-0 small fw-bold text-white">&copy; 2026 Academic Development Infrastructure Group | Form Verification System</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     (() => {
       'use strict'
       const forms = document.querySelectorAll('.needs-validation')
       Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
+          const msgInput = document.getElementById('message');
+          
+          // Sapilitang ire-reject kapag kulang sa 20 characters ang mensahe
+          if (!form.checkValidity() || (msgInput && msgInput.value.length < 20)) {
             event.preventDefault()
             event.stopPropagation()
+            if(msgInput && msgInput.value.length < 20) {
+                msgInput.setCustomValidity("Invalid");
+            }
+          } else {
+             if(msgInput) msgInput.setCustomValidity("");
           }
           form.classList.add('was-validated')
         }, false)
       })
     })()
+
+    // Live character tracking log node
+    const messageInput = document.getElementById('message');
+    const charCount = document.getElementById('char-count');
+    if (messageInput && charCount) {
+      messageInput.addEventListener('input', () => {
+        messageInput.setCustomValidity("");
+        const len = messageInput.value.length;
+        charCount.textContent = `Characters typed: ${len} / 20 minimum`;
+        if (len >= 20) {
+          charCount.className = "text-success small mt-1 fw-bold font-monospace";
+        } else {
+          charCount.className = "text-white-50 small mt-1 font-monospace";
+        }
+      });
+    }
   </script>
 </body>
 </html>

@@ -1,72 +1,91 @@
 <?php
-// Enforce strict post request submission tracking
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // 1. Capture incoming form payload parameters
     $name    = isset($_POST['name'])    ? trim($_POST['name'])    : '';
     $email   = isset($_POST['email'])   ? trim($_POST['email'])   : '';
-    $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
     $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
-    // 2. Server-side validation check (Ensures fields aren't empty)
-    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
-        echo "<div style='color: red; font-family: sans-serif; padding: 20px;'>";
-        echo "<h3>Error: All input fields are required.</h3>";
-        echo "<p><a href='index.html'>Click here to return to the form</a></p>";
+    if (empty($name) || empty($email) || empty($message) || strlen($message) < 20) {
+        echo "<div style='color: #ff3333; background: #050b1e; font-family: monospace; padding: 40px; border: 2px solid #ff3333; text-align: center; margin: 50px auto; max-width: 600px; border-radius: 8px;'>";
+        echo "<h3>GATEWAY SECURITY ERROR: CRITICAL VALIDATION FAILURE</h3>";
+        echo "<p style='color: #888;'>Data input fields are either incomplete or payload length requirement was violated.</p>";
+        echo "<p><a href='contact.html' style='color: #00f0ff; text-decoration: none; font-weight: bold;'>&larr; Re-initialize Secure Connection Form</a></p>";
         echo "</div>";
         exit;
     }
 
-    // 3. Apply XSS Sanitization guards to prevent malicious script execution
     $clean_name    = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
     $clean_email   = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
-    $clean_subject = htmlspecialchars($subject, ENT_QUOTES, 'UTF-8');
     $clean_message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+?>
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Core | Transaction Receipt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body class="d-flex flex-column h-100 text-white bg-dark-custom">
 
-    // 4. Output a clean, assignment-compliant confirmation dashboard summary
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Message Transmission Receipt</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <body class="bg-light">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow border-0">
-                        <div class="card-body p-5">
-                            <h1 class="text-success h3 fw-bold mb-3">✓ Message Transmitted Successfully</h1>
-                            <p class="text-muted mb-4">Your dynamic backend application handler processed the submission securely.</p>
-                            
-                            <hr class="my-4">
-                            
-                            <h5 class="fw-bold text-secondary mb-3">Payload Receipt Summary</h5>
-                            <ul class="list-group list-group-flush mb-4 rounded border">
-                                <li class="list-group-item"><strong>Sender Identity:</strong> <?php echo $clean_name; ?></li>
-                                <li class="list-group-item"><strong>Electronic Mail Address:</strong> <?php echo $clean_email; ?></li>
-                                <li class="list-group-item"><strong>Subject Line:</strong> <?php echo $clean_subject; ?></li>
-                                <li class="list-group-item p-3 bg-white">
-                                    <strong>Sanitized Message Payload:</strong><br>
-                                    <p class="text-dark mt-2 mb-0 border rounded p-3 bg-light" style="white-space: pre-wrap;"><?php echo $clean_message; ?></p>
-                                </li>
-                            </ul>
-                            
-                            <a href="index.html" class="btn btn-outline-primary px-4">Return to Portfolio Site</a>
-                        </div>
-                    </div>
-                </div>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top premium-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="index.html">SYSTEM<span class="text-info">CORE</span></a>
+    </div>
+  </nav>
+
+  <main class="container my-auto py-5 mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="p-5 rounded-4 cyber-panel text-start position-relative">
+          
+          <div class="text-center mb-4">
+            <span class="badge bg-success-glow text-success fw-bold mb-2 px-3 py-2">● TRANSACTION EXECUTED SUCCESSFULLY</span>
+            <h2 class="fw-bold text-white">Payload Receipt Summary</h2>
+            <p class="text-white-50 small mb-2">Your dynamic backend application handler processed the submission securely.</p>
+            
+            <div class="font-monospace small text-white-50 border border-secondary d-inline-block px-3 py-1 rounded bg-dark mt-2" style="font-size: 0.72rem;">
+              EXECUTION TIMESTAMP: <span class="text-warning"><?php echo date('Y-m-d H:i:s'); ?> UTC+8</span> | PORT: <span class="text-info">80/APACHE</span>
             </div>
+          </div>
+
+          <hr class="border-secondary my-4">
+
+          <div class="mb-3">
+            <span class="text-info d-block small fw-bold tracking-wider mb-1">REGISTERED OPERATOR IDENTITY</span>
+            <div class="p-3 bg-dark rounded border border-secondary text-white font-monospace"><?php echo $clean_name; ?></div>
+          </div>
+
+          <div class="mb-3">
+            <span class="text-info d-block small fw-bold tracking-wider mb-1">NETWORK COORDINATE PATHWAY</span>
+            <div class="p-3 bg-dark rounded border border-secondary text-white font-monospace"><?php echo $clean_email; ?></div>
+          </div>
+
+          <div class="mb-4">
+            <span class="text-info d-block small fw-bold tracking-wider mb-1">TRANSMITTED MESSAGE LOG PAYLOAD</span>
+            <div class="p-3 bg-dark rounded border border-secondary text-light small font-monospace" style="white-space: pre-wrap;"><?php echo $clean_message; ?></div>
+          </div>
+
+          <div class="text-center pt-2">
+            <a href="index.html" class="btn btn-outline-info px-5 py-2 fw-bold btn-sm">&larr; Return to Central Dashboard</a>
+          </div>
         </div>
-    </body>
-    </html>
-    <?php
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-white-50 mt-auto border-top border-dark">
+    <div class="container">
+      <p class="m-0 small fw-bold text-white">&copy; 2026 Academic Development Infrastructure Group | Server Validation Matrix Active</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<?php 
 } else {
-    // Intercept rogue structural direct request routing
-    header("Location: index.html");
+    header("Location: contact.html");
     exit;
 }
 ?>

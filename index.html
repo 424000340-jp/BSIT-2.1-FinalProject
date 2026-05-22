@@ -1,13 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BSIT Framework | Core Dashboard</title>
+  <title>System Core | Central Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Pwersahing sumunod ang background panel sa lapad ng cellphone screen */
+    .cyber-panel {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .dev-card {
+      border: 1px solid rgba(13, 202, 240, 0.2) !important;
+      background: rgba(5, 11, 30, 0.5) !important;
+      transition: all 0.3s ease;
+    }
+    .dev-card:hover {
+      border-color: #00f0ff !important;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .five-cols {
+      display: flex;
+      gap: 15px;
+    }
+    @media (min-width: 992px) {
+      .five-cols {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+      .five-cols .col-custom {
+        flex: 1 0 0%;
+        width: 20%;
+      }
+    }
+    @media (max-width: 991px) {
+      .five-cols {
+        flex-direction: column;
+      }
+      .five-cols .col-custom {
+        width: 100%;
+      }
+    }
+
+    /* ITO ANG MATINDING FIX PARA SA CELLPHONE VIEW */
+    @media (max-width: 767px) {
+        .bg-info-glow, .badge, .responsive-badge {
+            display: block !important;       /* Ginagawang block para pwedeng bumaba ang text */
+            white-space: normal !important;  /* Pinapayagang mag-wrap sa bagong linya kapag siksikan */
+            width: 100% !important;
+            max-width: 100% !important;
+            font-size: 0.65rem !important;   /* Liliitan ang font para magkasya sa screen */
+            padding: 10px !important;
+            text-align: center !important;
+            word-wrap: break-word !important;
+        }
+        
+        .cyber-panel h1 {
+            font-size: 1.35rem !important;   /* Liliitan ang title para maganda tingnan sa mobile */
+            line-height: 1.3 !important;
+        }
+        
+        .cyber-panel {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+    }
+  </style>
 </head>
-<body>
+<body class="d-flex flex-column h-100 text-center text-white bg-dark-custom">
+
+  <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050b1e; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Courier New', Courier, monospace;">
+      <div style="color: #00f0ff; font-size: 1.2rem; margin-bottom: 20px; font-weight: bold; letter-spacing: 2px;" id="boot-text">INITIALIZING SYSTEM_CORE_NODE...</div>
+      <div style="width: 250px; height: 3px; background: #1a1a1a; position: relative; overflow: hidden; border-radius: 10px;">
+          <div id="progress-bar" style="position: absolute; height: 100%; width: 0%; background: #00f0ff; box-shadow: 0 0 15px #00f0ff; transition: width 0.1s;"></div>
+      </div>
+      <div id="boot-logs" style="color: #475569; font-size: 0.75rem; margin-top: 15px; text-align: center; height: 60px; line-height: 1.5; overflow: hidden;"></div>
+  </div>
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top premium-navbar">
     <div class="container">
@@ -16,36 +94,161 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav ms-auto fw-bold">
-          <a class="nav-link active me-3" href="index.html">Home Dashboard</a>
-          <a class="nav-link me-3" href="about.html">Team Registry</a>
-          <a class="nav-link text-info" href="contact.html">Secure Gateway</a>
-        </div>
+        <ul class="navbar-nav ms-auto gap-2 gap-md-3 fw-medium pt-2 pt-lg-0">
+          <li class="nav-item"><a class="nav-link active text-info" href="index.html">Home Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#team-section">Team Registry</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Secure Gateway</a></li>
+        </ul>
       </div>
     </div>
   </nav>
 
-  <header class="container text-center my-auto py-5">
-    <div class="p-5 rounded-4 shadow-lg border border-secondary bg-dark text-white position-relative overflow-hidden jumbotron-wow">
-      <span class="badge bg-info text-dark fw-bold mb-3 px-3 py-2">SYSTEM NODE DEPLOYMENT: ONLINE</span>
-      <h1 class="display-4 fw-extrabold mb-3 text-white">Multi-Tier Integration Framework &amp;<br><span class="text-gradient-neon">Dynamic Layout Platform</span></h1>
-      <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 800px;">
-        An enterprise-grade platform architecture engineered for our 2nd Year Web Systems and Technologies final submission code matrix. Click the options below to transition seamlessly across multi-page directory modules.
-      </p>
-      <div class="d-flex justify-content-center gap-3">
-        <a href="about.html" class="btn btn-info btn-lg px-5 fw-bold text-dark">Meet Developers &rarr;</a>
-        <a href="contact.html" class="btn btn-outline-light btn-lg px-4">Access Data Form</a>
+  <main class="container my-auto pt-5 mt-5 px-3">
+    <div class="row justify-content-center py-2 py-md-5">
+      <div class="col-12 col-lg-10">
+        <div class="p-3 p-sm-4 p-md-5 rounded-4 cyber-panel text-center position-relative overflow-hidden">
+          
+          <div class="mb-3 mx-auto" style="max-width: 100%;">
+            <span class="badge bg-info-glow text-info fw-bold text-uppercase tracking-wider responsive-badge">SYSTEM NODE DEPLOYMENT: ONLINE</span>
+          </div>
+          
+          <h1 class="fw-bold text-white mb-3 text-wrap mx-auto" style="max-width: 100%;">Multi-Tier Integration Framework & Dynamic Layout Platform</h1>
+          
+          <p class="lead text-white-50 max-w-2xl mx-auto mb-4" style="font-size: 0.85rem; line-height: 1.5;">
+            An enterprise-grade platform architecture engineered for our 2nd Year Web Systems and Technologies final submission code matrix. Click the options below to transition seamlessly across multi-page directory modules.
+          </p>
+          <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 gap-sm-3 col-12 mx-auto" style="max-width: 400px; width: 100%;">
+            <a href="#team-section" class="btn btn-info px-4 py-2 fw-bold btn-sm w-100">Meet Developers &rarr;</a>
+            <a href="contact.html" class="btn btn-outline-light px-4 py-2 fw-bold btn-sm w-100">Access Data Form</a>
+          </div>
+        </div>
       </div>
     </div>
-  </header>
 
-  <footer class="py-4 text-center text-white-50 mt-auto">
+    <div id="team-section" class="mb-5 pt-4">
+        <div class="text-start mb-3 px-1">
+            <h5 class="text-info fw-bold small letter-spacing-2" style="font-size: 0.75rem;">● CORE INTEGRATION MODULES / TEAM REGISTRY (5-NODE MATRIX)</h5>
+        </div>
+        
+        <div class="five-cols px-1">
+            
+            <div class="col-custom">
+                <div class="p-3 p-md-4 h-100 rounded-4 text-start cyber-panel dev-card d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="text-info font-monospace small d-block mb-1" style="font-size:0.65rem;">NODE 01 // UI BUILD</span>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 1.05rem;">Jayvee Dinglasa</h5>
+                        <p class="text-white-50 mb-3" style="font-size:0.78rem; line-height: 1.4;">Controls local client components and structural responsive breakpoint interface flows.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-info btn-sm w-100 fw-bold py-2 mt-2" style="font-size:0.75rem;">Inspect Node</a>
+                </div>
+            </div>
+
+            <div class="col-custom">
+                <div class="p-3 p-md-4 h-100 rounded-4 text-start cyber-panel dev-card d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="text-info font-monospace small d-block mb-1" style="font-size:0.65rem;">NODE 02 // LOGIC</span>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 1.05rem;">Peejay Real</h5>
+                        <p class="text-white-50 mb-3" style="font-size:0.78rem; line-height: 1.4;">Manages server request protocols and back-end application structural integration rules.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-info btn-sm w-100 fw-bold py-2 mt-2" style="font-size:0.75rem;">Verify Data</a>
+                </div>
+            </div>
+
+            <div class="col-custom">
+                <div class="p-3 p-md-4 h-100 rounded-4 text-start cyber-panel dev-card d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="text-info font-monospace small d-block mb-1" style="font-size:0.65rem;">NODE 03 // SECURITY</span>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 1.05rem;">Rafael Ebrada</h5>
+                        <p class="text-white-50 mb-3" style="font-size:0.78rem; line-height: 1.4;">Handles internal parameter filtering, data sanitization layers, and security frameworks.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-info btn-sm w-100 fw-bold py-2 mt-2" style="font-size:0.75rem;">Audit Security</a>
+                </div>
+            </div>
+
+            <div class="col-custom">
+                <div class="p-3 p-md-4 h-100 rounded-4 text-start cyber-panel dev-card d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="text-info font-monospace small d-block mb-1" style="font-size:0.65rem;">NODE 04 // STREAM</span>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 1.05rem;">Raniel Piollo Camarador</h5>
+                        <p class="text-white-50 mb-3" style="font-size:0.78rem; line-height: 1.4;">Supervises client-side data streaming buffers and system script optimization loops.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-info btn-sm w-100 fw-bold py-2 mt-2" style="font-size:0.75rem;">Check Sync</a>
+                </div>
+            </div>
+
+            <div class="col-custom">
+                <div class="p-3 p-md-4 h-100 rounded-4 text-start cyber-panel dev-card d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="text-info font-monospace small d-block mb-1" style="font-size:0.65rem;">NODE 05 // SYSTEM HEAD</span>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 1.05rem;">Antoniño Jaypee Ramos</h5>
+                        <p class="text-white-50 mb-3" style="font-size:0.78rem; line-height: 1.4;">System Operations Lead managing overall deployment architectures and quality structural audits.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-info btn-sm w-100 fw-bold py-2 mt-2" style="font-size:0.75rem;">System Logs</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-3 mb-5 px-1">
+        <div class="col-md-12">
+            <div class="p-3 p-md-4 rounded-4 text-start" style="background: rgba(13, 202, 240, 0.03); border: 1px solid rgba(13, 202, 240, 0.15);">
+                <h6 class="text-info mb-3 fw-bold small letter-spacing-2" style="font-size: 0.75rem;">● REAL-TIME SYSTEM ARCHITECTURE MONITOR</h6>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="text-white-50 small d-block mb-1 font-monospace" style="font-size: 0.7rem;">SERVER UPTIME NODE</label>
+                        <div class="progress" style="height: 6px; background: #111a2e;">
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="text-white-50 small d-block mb-1 font-monospace" style="font-size: 0.7rem;">DATABASE CLOUD SYNC</label>
+                        <div class="progress" style="height: 6px; background: #111a2e;">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 89%"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="text-white-50 small d-block mb-1 font-monospace" style="font-size: 0.7rem;">ENCRYPTION LAYER PROTOCOL</label>
+                        <div class="progress" style="height: 6px; background: #111a2e;">
+                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-white-50 mt-auto border-top border-dark px-2">
     <div class="container">
-      <p class="m-0 fw-bold text-white">&copy; 2026 Academic Development Infrastructure Group | All Specifications Satisfied</p>
-      <p class="m-0 small text-info">Instructor Coordinator: Sir Edward James V. Grageda // Course: Web Development Fundamentals</p>
+      <p class="m-0 small fw-bold text-white" style="font-size: 0.8rem;">&copy; 2026 Academic Development Infrastructure Group | All Specifications Satisfied</p>
+      <p class="m-0 text-info small font-monospace mt-1" style="font-size: 0.7rem; line-height: 1.4;">Instructor Coordinator: Sir Edward James V. Grageda // Course: Web Development w/ Lab</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+      const logs = ["Loading core modules...", "Establishing system socket connection...", "Validating active local server runtime...", "Verifying Operator: Antoniño Jaypee Ramos...", "Handshake completed successfully."];
+      let progress = 0;
+      const interval = setInterval(() => {
+          if (progress < 100) {
+              progress += Math.floor(Math.random() * 12) + 1;
+              if (progress > 100) progress = 100;
+              document.getElementById('progress-bar').style.width = progress + '%';
+              if (progress % 20 == 0 || progress > 90) {
+                  const logIndex = Math.min(Math.floor(progress / 20), logs.length - 1);
+                  document.getElementById('boot-logs').innerHTML = logs[logIndex];
+              }
+          } else {
+              clearInterval(interval);
+              setTimeout(() => {
+                  const loader = document.getElementById('preloader');
+                  loader.style.transition = 'opacity 0.4s ease';
+                  loader.style.opacity = '0';
+                  setTimeout(() => loader.style.display = 'none', 400);
+              }, 400);
+          }
+      }, 100);
+  </script>
 </body>
 </html>
