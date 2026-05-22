@@ -3,146 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.min.css" rel="stylesheet">
-  
-  <link href="css/custom.css" rel="stylesheet">
+  <title>BSIT Framework | Core Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top premium-navbar">
     <div class="container">
-      <a class="navbar-brand" href="#">DevPortfolio</a>
+      <a class="navbar-brand fw-bold fs-4" href="index.html">SYSTEM<span class="text-info">CORE</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
+        <div class="navbar-nav ms-auto fw-bold">
+          <a class="nav-link active me-3" href="index.html">Home Dashboard</a>
+          <a class="nav-link me-3" href="about.html">Team Registry</a>
+          <a class="nav-link text-info" href="contact.html">Secure Gateway</a>
+        </div>
       </div>
     </div>
   </nav>
- <header class="bg-light py-5 text-center border-bottom">
-    <div class="container py-5">
-      <h1 class="display-4 fw-bold text-dark">Hello, I'm a Web Developer</h1>
-      <p class="lead text-muted">Building functional, elegant, and responsive full-stack web applications.</p>
-      <button class="btn btn-primary btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#contactModal">Get in Touch</button>
+
+  <header class="container text-center my-auto py-5">
+    <div class="p-5 rounded-4 shadow-lg border border-secondary bg-dark text-white position-relative overflow-hidden jumbotron-wow">
+      <span class="badge bg-info text-dark fw-bold mb-3 px-3 py-2">SYSTEM NODE DEPLOYMENT: ONLINE</span>
+      <h1 class="display-4 fw-extrabold mb-3 text-white">Multi-Tier Integration Framework &amp;<br><span class="text-gradient-neon">Dynamic Layout Platform</span></h1>
+      <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 800px;">
+        An enterprise-grade platform architecture engineered for our 2nd Year Web Systems and Technologies final submission code matrix. Click the options below to transition seamlessly across multi-page directory modules.
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="about.html" class="btn btn-info btn-lg px-5 fw-bold text-dark">Meet Developers &rarr;</a>
+        <a href="contact.html" class="btn btn-outline-light btn-lg px-4">Access Data Form</a>
+      </div>
     </div>
   </header>
-<main class="container my-5" id="projects">
-    <h2 class="text-center mb-4">My Projects</h2>
-    <div class="row g-4">
-      
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project 1">
-          <div class="card-body">
-            <h5 class="card-title">Front-End Development</h5>
-            <p class="card-text">A responsive web application built using Bootstrap 5 structural layouts and semantic components.</p>
-            <a href="#" class="btn btn-outline-primary btn-sm">View Project</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project 2">
-          <div class="card-body">
-            <h5 class="card-title">Interactive Scripts</h5>
-            <p class="card-text">Client-side logic execution and custom data dynamic workflows built using vanilla JavaScript listeners.</p>
-            <a href="#" class="btn btn-outline-primary btn-sm">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project 3">
-          <div class="card-body">
-            <h5 class="card-title">Back-End Engineering</h5>
-            <p class="card-text">Server-side request handling, input field filtering data sanitization, and response templates with PHP.</p>
-            <a href="#" class="btn btn-outline-primary btn-sm">View Project</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="contactModalLabel">Send a Message</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         <form id="portfolioContactForm" class="needs-validation" action="contact.php" method="POST" novalidate>
-            <div class="mb-3">
-              <label for="userName" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="userName" name="name" required>
-              <div class="invalid-feedback">Please provide your full name.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="userEmail" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="userEmail" name="email" required>
-              <div class="invalid-feedback">Please provide a valid email address.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="userSubject" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="userSubject" name="subject" required>
-              <div class="invalid-feedback">Please specify a message subject.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="userMessage" class="form-label">Message</label>
-              <textarea class="form-control" id="userMessage" name="message" rows="4" minlength="20" required></textarea>
-              <div class="invalid-feedback">Your message text must be at least 20 characters long.</div>
-            </div>
-
-            <div class="modal-footer px-0 pb-0 pt-3">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" id="submitFormBtn">Submit</button>
-            </div>
-          </form>
-        
-      </div>
-    </div>
-  </div>
-  <footer class="bg-dark text-white text-center py-4 border-top border-secondary">
+  <footer class="py-4 text-center text-white-50 mt-auto">
     <div class="container">
-      <p class="mb-1">&copy; 2026 Rian. All Rights Reserved.</p>
-      <p class="small text-muted mb-0">Course: Web Development Fundamentals | <a href="https://424000340-jp.github.io/my-portfolio" class="text-primary text-decoration-none target-link">GitHub Pages Portfolio</a></p>
+      <p class="m-0 fw-bold text-white">&copy; 2026 Academic Development Infrastructure Group | All Specifications Satisfied</p>
+      <p class="m-0 small text-info">Instructor Coordinator: Sir Edward James V. Grageda // Course: Web Development Fundamentals</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
-<script>
-    (() => {
-      'use strict';
-      // Fetch the custom form element we want to apply validation styles to
-      const form = document.getElementById('portfolioContactForm');
 
-      form.addEventListener('submit', (event) => {
-        // If an entry field fails semantic constraints, block submission
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-
-        // Apply Bootstrap 5 pseudo-class styles to look premium
-        form.classList.add('was-validated');
-      }, false);
-    })();
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

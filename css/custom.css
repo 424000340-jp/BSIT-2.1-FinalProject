@@ -1,11 +1,95 @@
-/* Custom Theme Color Overrides */
+/* ==========================================================================
+   PREMIUM CYBER-TECH HIGH-CONTRAST INTERFACE (COMPLIANT OVERRIDE MATRIX)
+   ========================================================================== */
+
 :root {
-  --bs-primary: #0d6efd;       /* Your primary action color */
-  --bs-dark: #1e293b;          /* Darker slate color for navigation bars */
-  --bs-font-size-base: 1rem;   /* Standard default global typography scaling */
+    --bs-primary: #00d2ff;
+    --bs-primary-rgb: 0, 210, 255;
+    --bg-dark-core: #070b19; 
+    --bg-card-surface: #0f162b;
+    --text-pure-white: #ffffff;
+    --text-neon-glow: #00f0ff;
+    --text-readable-silver: #f1f5f9;
 }
 
-/* Custom layout refinements */
+body {
+    background-color: var(--bg-dark-core);
+    color: var(--text-readable-silver);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-top: 85px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Translucent Premium Fixed Top Navbar */
+.premium-navbar {
+    background-color: rgba(7, 11, 25, 0.95) !important;
+    border-bottom: 2px solid var(--bs-primary);
+    box-shadow: 0 4px 25px rgba(0, 210, 255, 0.2);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--text-pure-white) !important;
+    font-size: 15px;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-neon-glow) !important;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+
+/* Interactive Modern Hero Showcase Section (Wow Factor Element) */
+.jumbotron-wow {
+    background: radial-gradient(circle at 50% 20%, rgba(0, 210, 255, 0.15) 0%, transparent 70%), #0f162b !important;
+    border: 1px solid rgba(0, 210, 255, 0.2) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.text-gradient-neon {
+    background: linear-gradient(135deg, #00d2ff 0%, #9d4edd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 3-Column Responsive Components (Wow Factor Interactivity) */
+.cyber-card {
+    background-color: var(--bg-card-surface) !important;
+    border: 1px solid rgba(0, 210, 255, 0.15) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cyber-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--text-neon-glow) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+
+/* Absolute High Contrast Input Fields */
+.premium-field {
+    background-color: #030611 !important;
+    border: 2px solid rgba(0, 210, 255, 0.25) !important;
+    color: var(--text-pure-white) !important;
+    font-size: 14px !important;
+    padding: 12px !important;
+}
+
+.premium-field:focus {
+    border-color: var(--text-neon-glow) !important;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.4) !important;
+}
+
+.form-label-bright {
+    color: var(--text-neon-glow) !important;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+/* Corporate Baseline Footer Separator */
 footer {
-  letter-spacing: 0.5px;
+    border-top: 1px solid rgba(0, 210, 255, 0.15);
+    background-color: #030611;
 }
